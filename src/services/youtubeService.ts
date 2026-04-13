@@ -33,7 +33,7 @@ export const pollYouTube = async () => {
 
       const [ metadata, created ] = await VideoMetadata.findOrCreate({
         where: { videoId },
-        defaults: { lastStatus: liveBroadcastContent }
+        defaults: { lastStatus: liveBroadcastContent, videoId: videoId }
       });
 
       if (created) {

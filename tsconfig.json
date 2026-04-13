@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    /* Target & Module System */
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "ES2022"
+    ],
+    /* Strictness */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    /* Output & Structure */
+    "outDir": "./dist",
+    "rootDir": "./", // Matches your sidebar where files like server.ts are in the root
+    /* Error Fixes */
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "**/*", // Includes root files like server.ts and processenv.d.ts
+    "src/**/*" // Includes your source folder
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test.ts",
+    "test.js"
+  ]
+}
