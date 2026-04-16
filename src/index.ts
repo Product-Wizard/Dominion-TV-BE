@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"))
 
 // Routes
+app.get('/', (req, res) => res.status(200).json({ error: false, message: "server running" }));
 app.use('/api/notifications', notificationRoutes);
 
 // const PORT = Number(process.env.PORT || 4000);

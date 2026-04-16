@@ -20,6 +20,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, morgan_1.default)("dev"));
 // Routes
+app.get('/', (req, res) => res.status(200).json({ error: false, message: "server running" }));
 app.use('/api/notifications', notificationRoutes_js_1.default);
 // const PORT = Number(process.env.PORT || 4000);
 const PORT = Number(process.env.PORT || process.env.PASSENGER_APP_PORT || 3000);
