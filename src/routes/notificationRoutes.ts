@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { registerToken, testNotification } from '../controllers/notificationController';
+import { registerToken, testNotification } from '../controllers/notificationController.js';
 
 const router = Router();
 

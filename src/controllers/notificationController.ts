@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { Expo } from 'expo-server-sdk';
-import PushToken from '../models/PushToken';
-import { sendNotificationToAll } from '../services/notificationService';
+import PushToken from '../models/PushToken.js';
+import { sendNotificationToAll } from '../services/notificationService.js';
 
 export const registerToken = async (req: Request, res: Response) => {
   const { token, deviceId, userId } = req.body;

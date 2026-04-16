@@ -2,9 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import sequelize from './config/database';
-import notificationRoutes from './routes/notificationRoutes';
-import { pollYouTube } from './services/youtubeService';
+import sequelize from './config/database.js';
+import notificationRoutes from './routes/notificationRoutes.js';
+import { pollYouTube } from './services/youtubeService.js';
 import morgan from "morgan"
 
 dotenv.config();

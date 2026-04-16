@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const database_1 = __importDefault(require("../config/database"));
+const database_js_1 = __importDefault(require("../config/database.js"));
 class PushToken extends sequelize_1.Model {
     deviceId;
     token;
@@ -25,7 +25,7 @@ PushToken.init({
         allowNull: true,
     }
 }, {
-    sequelize: database_1.default,
+    sequelize: database_js_1.default,
     modelName: 'PushToken',
 });
 exports.default = PushToken;

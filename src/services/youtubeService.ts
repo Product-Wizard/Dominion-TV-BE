@@ -1,6 +1,6 @@
 import axios from 'axios';
-import VideoMetadata from '../models/VideoMetadata';
-import { sendNotificationToAll } from './notificationService';
+import VideoMetadata from '../models/VideoMetadata.js';
+import { sendNotificationToAll } from './notificationService.js';
 
 export const pollYouTube = async () => {
   const apiKey = process.env.YOUTUBE_API_KEY;

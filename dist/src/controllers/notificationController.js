@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.testNotification = exports.registerToken = void 0;
 const expo_server_sdk_1 = require("expo-server-sdk");
-const PushToken_1 = __importDefault(require("../models/PushToken"));
-const notificationService_1 = require("../services/notificationService");
+const PushToken_js_1 = __importDefault(require("../models/PushToken.js"));
+const notificationService_js_1 = require("../services/notificationService.js");
 const registerToken = async (req, res) => {
     const { token, deviceId, userId } = req.body;
     if (!token || !deviceId) {
@@ -16,7 +16,7 @@ const registerToken = async (req, res) => {
         return res.status(400).json({ error: 'Invalid Expo push token' });
     }
     try {
-        await PushToken_1.default.upsert({ deviceId, token, userId });
+        await PushToken_js_1.default.upsert({ deviceId, token, userId });
         res.json({ success: true });
     }
     catch (error) {
@@ -28,7 +28,7 @@ exports.registerToken = registerToken;
 const testNotification = async (req, res) => {
     const { title, body, data } = req.body;
     try {
-        await (0, notificationService_1.sendNotificationToAll)(title || 'Test Notification', body || 'Test message', data || { type: 'test' });
+        await (0, notificationService_js_1.sendNotificationToAll)(title || 'Test Notification', body || 'Test message', data || { type: 'test' });
         res.json({ success: true });
     }
     catch (error) {

@@ -1,5 +1,5 @@
 import { Expo, ExpoPushMessage, ExpoPushTicket } from 'expo-server-sdk';
-import PushToken from '../models/PushToken';
+import PushToken from '../models/PushToken.js';
 
 const expo = new Expo();
 

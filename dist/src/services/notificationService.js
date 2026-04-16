@@ -5,10 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendNotificationToAll = void 0;
 const expo_server_sdk_1 = require("expo-server-sdk");
-const PushToken_1 = __importDefault(require("../models/PushToken"));
+const PushToken_js_1 = __importDefault(require("../models/PushToken.js"));
 const expo = new expo_server_sdk_1.Expo();
 const sendNotificationToAll = async (title, message, data) => {
-    const tokens = await PushToken_1.default.findAll();
+    const tokens = await PushToken_js_1.default.findAll();
     const pushMessages = tokens.map(t => ({
         to: t.token,
         sound: 'default',
@@ -34,7 +34,7 @@ const sendNotificationToAll = async (title, message, data) => {
             if (ticket.details && ticket.details.error === 'DeviceNotRegistered') {
                 const token = pushMessages[i].to;
                 console.log(`Token ${token} is not registered anymore, removing...`);
-                await PushToken_1.default.destroy({ where: { token } });
+                await PushToken_js_1.default.destroy({ where: { token } });
             }
         }
     }

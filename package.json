@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx src/index.ts --watch"
+    "dev": "tsx src/index.ts --watch",
+    "prod": "node ./dist/src/index"
   },
   "keywords": [],
   "author": "",

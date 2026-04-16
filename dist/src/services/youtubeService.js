@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.pollYouTube = void 0;
 const axios_1 = __importDefault(require("axios"));
-const VideoMetadata_1 = __importDefault(require("../models/VideoMetadata"));
-const notificationService_1 = require("./notificationService");
+const VideoMetadata_js_1 = __importDefault(require("../models/VideoMetadata.js"));
+const notificationService_js_1 = require("./notificationService.js");
 const pollYouTube = async () => {
     const apiKey = process.env.YOUTUBE_API_KEY;
     const channelId = process.env.YOUTUBE_CHANNEL_ID;
@@ -32,20 +32,20 @@ const pollYouTube = async () => {
                 continue;
             const title = item.snippet.title;
             const liveBroadcastContent = item.snippet.liveBroadcastContent; // 'live', 'upcoming', 'none'
-            const [metadata, created] = await VideoMetadata_1.default.findOrCreate({
+            const [metadata, created] = await VideoMetadata_js_1.default.findOrCreate({
                 where: { videoId },
                 defaults: { lastStatus: liveBroadcastContent, videoId: videoId }
             });
             if (created) {
                 if (liveBroadcastContent === 'live') {
-                    await (0, notificationService_1.sendNotificationToAll)('Dominion TV is LIVE!', title, { videoId, type: 'live' });
+                    await (0, notificationService_js_1.sendNotificationToAll)('Dominion TV is LIVE!', title, { videoId, type: 'live' });
                 }
                 else if (liveBroadcastContent === 'none') {
-                    await (0, notificationService_1.sendNotificationToAll)('New Video Uploaded!', title, { videoId, type: 'video' });
+                    await (0, notificationService_js_1.sendNotificationToAll)('New Video Uploaded!', title, { videoId, type: 'video' });
                 }
             }
             else if (metadata.lastStatus !== 'live' && liveBroadcastContent === 'live') {
-                await (0, notificationService_1.sendNotificationToAll)('Dominion TV is LIVE!', title, { videoId, type: 'live' });
+                await (0, notificationService_js_1.sendNotificationToAll)('Dominion TV is LIVE!', title, { videoId, type: 'live' });
             }
             if (metadata.lastStatus !== liveBroadcastContent) {
                 await metadata.update({ lastStatus: liveBroadcastContent });
