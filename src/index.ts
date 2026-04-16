@@ -21,7 +21,8 @@ app.use(morgan("dev"))
 // Routes
 app.use('/api/notifications', notificationRoutes);
 
-const PORT = Number(process.env.PORT || 4000);
+// const PORT = Number(process.env.PORT || 4000);
+const PORT = Number(process.env.PORT || process.env.PASSENGER_APP_PORT || 3000);
 
 const startServer = async () => {
   try {
